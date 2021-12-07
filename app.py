@@ -14,6 +14,7 @@ from wtforms import SelectField
 from flask_admin.form import Select2Widget
 import sqlalchemy
 
+
 app = Flask(__name__)
 
 ##setting up SQLAlchemy
@@ -165,9 +166,10 @@ class AdminAccounts(db.Model):
 
 class PostModelView(ModelView):
     # can_delete=False
+
     page_size = 50
     column_exclude_list = ['content',]
-    form_excluded_columns=['slug',]
+    form_excluded_columns=['slug','contact_website','rate']
     create_modal = True
     edit_modal = True
 
@@ -177,17 +179,40 @@ class PostModelView(ModelView):
 
 class GalleryModelView(ModelView):
     # can_delete=True
+    create_modal = True
+    edit_modal = True
+
     def _list_thumbnail(view, context, model, name):
         if name == 'image_header':
-            return model.image_header
+            return Markup(
+                '<img src="%s">' %
+                url_for('static',
+                        filename=f'files/{form.thumbgen_filename(model.image_header)}')
+            )
         elif name == 'image_thumbnail':
-            return model.image_thumbnail
+            return Markup(
+                '<img src="%s">' %
+                url_for('static',
+                        filename=f'files/{form.thumbgen_filename(model.image_thumbnail)}')
+            )
         elif name == 'image_1':
-            return model.image_1
+            return Markup(
+                '<img src="%s">' %
+                url_for('static',
+                        filename=f'files/{form.thumbgen_filename(model.image_1)}')
+            )
         elif name == 'image_2':
-            return model.image_2
+            return Markup(
+                '<img src="%s">' %
+                url_for('static',
+                        filename=f'files/{form.thumbgen_filename(model.image_2)}')
+            )
         elif name == 'image_3':
-            return model.image_3
+            return Markup(
+                '<img src="%s">' %
+                url_for('static',
+                        filename=f'files/{form.thumbgen_filename(model.image_3)}')
+            )
         else:
             return ''
 
@@ -220,6 +245,8 @@ class GalleryModelView(ModelView):
 
 class OpeningHoursModelView(ModelView):
     # can_delete=False
+    create_modal = True
+    edit_modal = True
     try:
         l1 = [x.slug for x in Posts.query.all()]
         l2 = []
@@ -233,6 +260,8 @@ class OpeningHoursModelView(ModelView):
 
 class AdminAccountsModelView(ModelView):
     # can_delete=False
+    create_modal = True
+    edit_modal = True
     page_size = 50
     column_exclude_list = ['content',]
     create_modal = True
