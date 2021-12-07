@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+    <section class="bg-dark">
+        <iframe src="https://maps.google.com/maps?q=Bulusan%20Sorsogon&t=&z=13&ie=UTF8&iwloc=&output=embed" height="450" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0" width="100%" class="d-block mapouter" title="Bulusan"></iframe>
+    </section>
+    <section class="pb-5 pt-5">
+        <div class="container pb-2 pt-2">
+            <div class="gx-lg-5 gy-4 row">
+                <div class="col-lg-5 col-xl-4 order-lg-1">
+                    <div class="bg-light p-4 position-sticky top-0">
+                        <h2 class="h5 text-dark">Filter Search</h2>
+                        <hr/>
+                        <form action='/explorer' method="post">
+
+                            <div class="input-group mb-3">
+                                <input type="text" name="input_search"  class="border-end-0 form-control p-3" placeholder="Looking for?" aria-label="Enter Keyword" aria-describedby="keyword-input">
+                                <button class="bg-white input-group-text pe-3 ps-3" type="submit" value="submit">Search</button>
+                            </div>
+                            <div class="input-group mb-3">
+                            </div>
+                            <div class="mb-3">
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-7 col-xl-8 order-lg-0">
+                    <div class="align-items-center g-2 mb-3 row">
+                        {%if is_empty%}
+                        <div class="col">
+                            <h1 class="h5 mb-0 text-dark">Result for: <span class="fw-normal small text-secondary">----</span></h1>
+                        </div>
+                        {%else%}
+                        <div class="col">
+                            <h1 class="h5 mb-0 text-dark">Result for: <span class="fw-normal small text-secondary">{{search_forEE}}</span></h1>
+                        </div>
+
+                        <div class="col-sm-auto">
+                            <select class="form-select" id="sortingOption" required>
+                                <option selected disabled value="">Sort by</option>
+                                <option>Nearby</option>
+                                <option>Name</option>
+                                <option>Price: High to Low</option>
+                                <option>Price: Low to High</option>
+                                <option>Random</option>
+                            </select>
+                        </div>
+                        {%endif%}
+                    </div>
+                    <div class="justify-content-center row row-cols-md-2">
+                        {% for post in posts %}
+                        <div class="pb-3 pt-3">
+                            <div class="border">
+                                <a href={{"/post/" + post.slug}} class="d-block"><img src="{{url_for('static',filename = 'files/' + header_image_dict[post.slug])}}" class="img-fluid w-100" alt="Location image" width="350" height="240"></a>
+                                <div class="pb-3 pe-4 ps-4 pt-4">
+                                    <div class="align-items-center d-flex justify-content-between">
+                                        <div class="pb-1 pt-1">
+                                            <a href={{"/post/" + post.slug}} class="link-dark text-decoration-none"><h2 class="h5 mb-1">
+                                                {{post.title}}</h2></a>
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1.125em" height="1.125em" class="me-1 text-primary">
+                                                    <g>
+                                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                                        <path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0zM12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+                                                    </g>
+                                                </svg>
+                                                <span class="align-middle">Bulusan Sorsogon - {{post.category}}</span>
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-primary ms-2 p-2 rounded-pill" href="#" aria-label="add to favorite"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" class="d-block">
+                                                <g>
+                                                    <path fill="none" d="M0 0H24V24H0z"/>
+                                                    <path d="M20.243 4.757c2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236C5.515 3 8.093 2.56 10.261 3.44L6.343 7.358l1.414 1.415L12 4.53l-.013-.014.014.013c2.349-2.109 5.979-2.039 8.242.228z"/>
+                                                </g>
+                                            </svg></a>
+                                    </div>
+                                    <hr/>
+                                    <div class="align-items-center d-flex justify-content-between">
+                                        <div class="pb-1 pt-1"><div class="fb-like" data-href="http://127.0.0.1:5000/post/{{post.slug}}" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="false"></div>
+                                        </div>
+                                        <span class="fw-bold pb-1 pt-1"><span>{{post.price_range}}</span><span></span><span></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+                    </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+        <main>
+            <section class="background-cover bg-dark opacity-85 pb-5 position-relative pt-5 text-white" style="background-image:url('{{url_for('static',filename = 'assets/images/header.jpg')}}');">
+                <div class="container mt-5  pb-5 pt-5">
+                    <div class="pb-5 pt-5 row">
+                        <div class="col-lg-7 col-xl-6 col-xxl-5 pb-5 pt-5">
+                            <h1 class="display-5 fst-normal fw-bold shadow-none text-light">Discover Great Travels.</h1>
+                            <p class="display-5 fst-normal fw-bold shadow-none text-light">Explore Bulusan!</p>
+                            <p class="lead mb-5">Find out the perfect places that your are looking for.</p>
+                            <form action="/explorer" method="post">
+                                <div class="gx-2 row">
+                                    <div class="col-sm mb-3">
+                                        <input name='input_search' type="text" class="form-control form-control-lg ps-4 pe-4 rounded-pill" placeholder="What are you looking for?">
+                                    </div>
+                                    <div class="col-sm-auto mb-3 text-end">
+                                        <a href="/explorer"><button type="submit" class="btn btn-lg btn-primary pe-4 ps-4 rounded-pill">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1.25em" height="1.25em" class="me-1">
+                                                    <g>
+                                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                                        <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path>
+                                                    </g>
+                                                </svg>
+                                                <span class="align-middle">Search</span>&nbsp;
+                                            </button></a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="mt-n5 pb-3 position-relative text-center" style="margin-top: -4rem;">
+                <div class="container ">
+</div>
+            </section>
+            <section class="pb-5 pt-5">
+                <div class="justify-content-center g-0 row">
+                    <div class="col-4 col-lg-2">
+                </div>
+                    <div class="col-4 col-lg-2">
+</div>
+                    <div class="col-4 col-lg-2">
+                        <a class="bg-white d-block link-primary pb-4 pe-3 ps-3 pt-4 text-decoration-none" href="#">   </a>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="mb-4 text-center">
+                        <h2 class="text-dark">New Destinations</h2>
+                        <p>New Vacation Spots on Bulusan</p>
+                    </div>
+                    <div class="justify-content-center row">
+                        {% for post in posts %}
+                            <div class="col-lg-4 col-md-6 pb-3 pt-3">
+                            <div class="border">
+                                <a href={{"/post/" + post.slug}} class="d-block"><img src="{{url_for('static',filename = 'files/' + header_image_dict[post.slug])}}" class="img-fluid w-100" alt="Location image" width="350" height="240"></a>
+                                <div class="pb-3 ps-4 pe-4 pt-4">
+                                    <div class="align-items-center d-flex justify-content-between">
+                                        <div class="pb-1 pt-1">
+                                            <a href={{"/post/" + post.slug}} class="link-dark text-decoration-none"><h3 class="h5 mb-1">{{post.title}}</h3></a>
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1.125em" height="1.125em" class="me-1 text-primary">
+                                                    <g>
+                                                        <path fill="none" d="M0 0h24v24H0z"/>
+                                                        <path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0zM12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+                                                    </g>
+                                                </svg>
+                                                <span class="align-middle">Bulusan Sorsogon - {{post.category}}</span>
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-primary ms-2 p-2 rounded-pill" href="#" aria-label="Add to favorite"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" class="d-block">
+                                                <g>
+                                                    <path fill="none" d="M0 0H24V24H0z"/>
+                                                    <path d="M20.243 4.757c2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236C5.515 3 8.093 2.56 10.261 3.44L6.343 7.358l1.414 1.415L12 4.53l-.013-.014.014.013c2.349-2.109 5.979-2.039 8.242.228z"/>
+                                                </g>
+                                            </svg></a>
+                                    </div>
+                                    <hr/>
+                                    <div class="align-items-center d-flex justify-content-between">
+                                        <div class="pb-1 pt-1">
+                                            <div class="fb-like" data-href="http://127.0.0.1:5000/post/{{post.slug}}" data-width="" data-layout="box_count" data-action="like" data-size="small" data-share="false"></div>
+                                            <span class="align-middle"></span>
+                                        </div>
+                                        <span class="fw-bold pb-1 pt-1"><span>{{post.price_range}}</span><span></span><span></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+                    </div>
+                    <div class="pb-3 pt-3 text-center">
+                        <a class="btn btn-primary pe-4 ps-4 rounded-pill" href="/showall">View More</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+{% endblock %}

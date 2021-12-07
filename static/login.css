@@ -1,0 +1,181 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #2c2c2c;
+}
+
+.login-form {
+  background-color: #111;
+  box-shadow: 6px 6px 9px black;
+}
+.login-form * {
+  transition: all 0.3s;
+}
+.login-form > div {
+  margin: 15px;
+  position: relative;
+  box-shadow: 6px 6px 6px black;
+}
+.login-form > div > input[type=text],
+.login-form > div > input[type=email],
+.login-form > div > input[type=password] {
+  border: 0;
+  width: 300px;
+  font-size: 16px;
+  padding: 28px 13px 13px 28px;
+  background-color: #eee;
+}
+.login-form > div > input[type=text]:focus,
+.login-form > div > input[type=email]:focus,
+.login-form > div > input[type=password]:focus {
+  background-color: white;
+}
+.login-form > div > input[type=text]:focus + label,
+.login-form > div > input[type=email]:focus + label,
+.login-form > div > input[type=password]:focus + label {
+  background-color: white;
+}
+.login-form > div > input[type=text]:focus + label,
+.login-form > div > input[type=email]:focus + label,
+.login-form > div > input[type=password]:focus + label {
+  top: 5px;
+  left: 10px;
+  bottom: auto;
+  padding-left: 0;
+  padding-bottom: 2px;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #999;
+}
+.login-form > div > input[type=text]:not(:placeholder-shown) + label,
+.login-form > div > input[type=email]:not(:placeholder-shown) + label,
+.login-form > div > input[type=password]:not(:placeholder-shown) + label {
+  top: 5px;
+  left: 10px;
+  bottom: auto;
+  padding-left: 0;
+  padding-bottom: 2px;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #999;
+}
+.login-form > div > input[type=text]:valid,
+.login-form > div > input[type=email]:valid,
+.login-form > div > input[type=password]:valid {
+  z-index: 999;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACJklEQVRIia3WX2jOURzH8dfz2xK25m+7WEvSrpbkSsTFc7EhDSk3YyUlTSjcLGk5l0qSJEq5crFkCCminqRcrZa0NMuFJK2l9VxILLk4v4fHs+ffnnzqV79zzvf7/v5+53zP95yMSgpgHXZhB9ZjJeaQxzs8xRNMpvbzlKkA7sQw9qfQasrjIc7jQ2mgpIzDHrzG0Trg0IaB1OdAaYCmf1rBIG5hRR3gUrVgL37KeiUXOzMpGPowikUNwIs1h8O4Lfydog5c+w9waMYldFGYoqwL6GkA9gv3U86qov4WtMsazQjWYAyrGwjwAP1oxSNsLhrLY0uC7Q3CZ3BS8D2FLS4Zb0NfIm6iheoHjgs+CRKcw8Yydr0JuhsIcAf30vdNOFPBrjvB8gXCP2JIMCdoxRVxDcqpLREzoZy+oBfHxNyW2h4TfE7bw+IfVFSzuEDldBHP04eY2yNicSPYjFPV4MgneFth8BA6011+AwdxVkDQpr6NOZERHMHNCgZvsFvw8U9PDHi5jq+HoQTPxJwupw14JOgs6usRK20t5fG4UOyu4kQV43Hsw1dx13fVEWAE/YUAHWI9X1PFYRbfxMJYS9PYKpgqVNPPYjr+qOK0vE74HE5jikI1zSHnvaxpsXQ0VXCuBz6M64WT7V9QzpiscWzDsgXCpzFYDJ8fALImcRdLxVvFkhrg2dR+AC9Lz+T5t4qCouFa7BSnrRvt4ik4gwm8UOPa8htG8HgowA/lzwAAAABJRU5ErkJggg==");
+  background-repeat: no-repeat;
+  background-position: 7px 28px;
+  background-size: 16px 16px;
+}
+.login-form > div > input[type=text]:valid + label,
+.login-form > div > input[type=email]:valid + label,
+.login-form > div > input[type=password]:valid + label {
+  color: green;
+  border-bottom-color: green;
+}
+.login-form > div > input[type=text]:invalid:not(:focus):not(:placeholder-shown) + label,
+.login-form > div > input[type=email]:invalid:not(:focus):not(:placeholder-shown) + label,
+.login-form > div > input[type=password]:invalid:not(:focus):not(:placeholder-shown) + label {
+  color: #800;
+  border-bottom-color: #800;
+}
+.login-form > div > input[type=text]:invalid:focus ~ .tooltip,
+.login-form > div > input[type=email]:invalid:focus ~ .tooltip,
+.login-form > div > input[type=password]:invalid:focus ~ .tooltip {
+  display: block;
+}
+.login-form > div > input[type=text]:invalid:focus:placeholder-shown ~ .tooltip,
+.login-form > div > input[type=email]:invalid:focus:placeholder-shown ~ .tooltip,
+.login-form > div > input[type=password]:invalid:focus:placeholder-shown ~ .tooltip {
+  display: none;
+}
+.login-form > div .tooltip {
+  z-index: 100;
+  display: none;
+  position: absolute;
+  left: 20px;
+  top: 60px;
+  right: 20px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: black;
+  color: white;
+  box-shadow: 1px 1px 3px 1px black;
+}
+.login-form > div .tooltip:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 100%;
+  left: 10px;
+  border-bottom: 10px solid black;
+  border-top: 0px solid transparent;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+}
+.login-form > div > label {
+  position: absolute;
+  color: #888;
+  font-size: 20px;
+  padding: 0 20px;
+  background-color: #eee;
+  left: 6px;
+  top: 20px;
+  bottom: 1px;
+  right: 6px;
+  cursor: text;
+}
+.login-form > div > input[type=submit] {
+  cursor: pointer;
+  display: block;
+  color: white;
+  background-color: green;
+  width: 100%;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 18px;
+  border: 0px solid #555;
+  background-image: linear-gradient(60deg, green, green 40%, #1a1 60%, green 90%, green);
+  animation: anim 8s linear infinite alternate;
+  background-position: -200px 0;
+}
+@keyframes anim {
+  0% {
+    background-position: -300px 0;
+  }
+  50% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 300px 0;
+  }
+}
+
+/* The alert message box */
+.alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
