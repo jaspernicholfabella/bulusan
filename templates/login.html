@@ -1,23 +1,37 @@
+{%extends "base.html"%}
 
-<link href="../static/login.css" rel = "stylesheet">
-<form class="login-form" action="/validatelogin" method="post">
-  <div>
-    <input type="text" id="username" name="username" value="{{request.form.username}}" required placeholder="username" />
-    <label for="username">username</label>
-  </div>
-  <div>
-    <!--required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"-->
-    <input type="password"  id="password"  name="password" value="{{request.form.password}}" placeholder="&middot;&middot;&middot;&middot;&middot;&middot;&middot;&middot;"/>
-    <label for="password">password</label>
-     {% if error %}
-        <div class="alert">
-          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            {{error}}
-        </div>
-     {% endif %}
+{%block content%}
+<div style="
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
 
+justify-content:center;
+padding-top:10rem;
+padding-bottom:8rem;
+"
+>
+
+<form action="" method="post">
+  <p class="h1">Login</p>
+    {{form.hidden_tag()}}
+  <div class="form-group">
+      {{form.user_name.label()}}
+      {{form.user_name(class="form-control",size=32)}}
   </div>
-  <div>
-  <input type="submit" value="Login" />
+  <div class="form-group">
+      {{form.password.label()}}
+      {{form.password(class="form-control",size=32)}}
   </div>
+    <br>
+    {{form.submit(class="btn btn-primary")}}
+    <br>
 </form>
+    <br>
+    <p style="display:flex;align-items:flex-start;">{{error}}</p>
+</div>
+
+
+
+{%endblock%}
