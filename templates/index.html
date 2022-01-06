@@ -67,20 +67,26 @@
                                                 </svg>
                                                 <span class="align-middle">Bulusan Sorsogon - {{post.category}}</span>
                                             </div>
+
                                         </div>
-                                        <a class="btn btn-primary ms-2 p-2 rounded-pill" href="#" aria-label="Add to favorite"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" class="d-block">
-                                                <g>
-                                                    <path fill="none" d="M0 0H24V24H0z"/>
-                                                    <path d="M20.243 4.757c2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236C5.515 3 8.093 2.56 10.261 3.44L6.343 7.358l1.414 1.415L12 4.53l-.013-.014.014.013c2.349-2.109 5.979-2.039 8.242.228z"/>
-                                                </g>
-                                            </svg></a>
+                                                                                    <div class="pb-1 pt-1 ms-2 p-2">
+                                                                                                                                <div id="fb-root"></div>
+                                        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0" nonce={{post.slug}}></script>
+                                        <div class="fb-like" data-href="https://traveldestinationinbulusan.com/post/{{post.slug}}" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="false"></div>
+
+                                        </div>
+<!--                                        <a class="btn btn-primary ms-2 p-2 rounded-pill" href="#" aria-label="Add to favorite"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" class="d-block">-->
+<!--                                                <g>-->
+<!--                                                    <path fill="none" d="M0 0H24V24H0z"/>-->
+<!--                                                    <path d="M20.243 4.757c2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236C5.515 3 8.093 2.56 10.261 3.44L6.343 7.358l1.414 1.415L12 4.53l-.013-.014.014.013c2.349-2.109 5.979-2.039 8.242.228z"/>-->
+<!--                                                </g>-->
+<!--                                            </svg></a>-->
+
                                     </div>
                                     <hr/>
+
                                     <div class="align-items-center d-flex justify-content-between">
-                                        <div class="pb-1 pt-1">
-                                            <div class="fb-like" data-href="http://127.0.0.1:5000/post/{{post.slug}}" data-width="" data-layout="box_count" data-action="like" data-size="small" data-share="false"></div>
-                                            <span class="align-middle"></span>
-                                        </div>
+
                                         <span class="fw-bold pb-1 pt-1"><span>{{post.price_range}}</span><span></span><span></span></span>
                                     </div>
                                 </div>
